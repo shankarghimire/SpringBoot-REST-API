@@ -26,17 +26,25 @@ public class BookService {
 	//Method to extract a single Book
 	public Book getBookById(int id) {
 		Book book = null;
-		//Method I:
-		book = listBook.stream().filter(e->e.getId()==id).findFirst().get();
-		//Method II:
-//		for(Book b: listBook) {
-//			if(id == b.getId()) {
-//				book = b;
-//				break;
+		try {
+			//Method I:
+			book = listBook.stream().filter(e->e.getId()==id).findFirst().get();
+			//Method II:
+//			for(Book b: listBook) {
+//				if(id == b.getId()) {
+//					book = b;
+//					break;
+//				}
 //			}
-//		}
+		}
+		catch(Exception e) {
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+
 		return book;
 	}
+	
 	
 	//Method to add new Book to API
 	public Book addBook(Book book) {
